@@ -1,0 +1,31 @@
+View(Admission_Predict)
+head(Admission_Predict)
+summary(Admission_Predict)
+length(Admission_Predict$SOP)
+str(Admission_Predict)
+total_admitss= sum(Admission_Predict$`Chance of Admit` == 1)/length(Admission_Predict$`Chance of Admit`)
+total_admitss
+index<- sample(1:nrow(Admission_Predict),size = 0.75*nrow(Admission_Predict))
+train.popu = Admission_Predict[index,]
+test.popu = Admission_Predict[index,]
+head(train.popu)
+head(test.popu)
+length(train.popu$SOP)
+length(test.popu$SOP)
+class(CGPA)
+class(`University Rating`)
+summary(Admission_Predict)
+#change class
+Admission_Predict<- factor(Admission_Predict)
+pairs(Admission_Predict[,2:7])
+attach(Admission_Predict)
+pairs(`Chance of Admit`~Research+CGPA+LOR+SOP+`University Rating`+`TOEFL Score`+`GRE Score`)
+pairs(Admission_Predict)
+#pairs(iris[,1:4], col=iris$Species)
+sapply(Admission_Predict, sd)
+xtabs(~SOP+LOR)
+model1<- glm(formula = `Chance of Admit`~ Research+CGPA+LOR+SOP+`University Rating`+`TOEFL Score`+`GRE Score`,data= 'Admission_Predict')
+model1
+summary(model1)
+plot(model21)
+plot(model1)
